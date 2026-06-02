@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <style>
+    .axis { stroke: #333; stroke-width: 1; }
+    .grid { stroke: #ddd; stroke-width: 1; }
+    .label { font-family: Arial, sans-serif; fill: #222; font-size: 12px; }
+    .title { font-family: Arial, sans-serif; fill: #111; font-size: 18px; font-weight: bold; }
+    .line { fill: none; stroke: #1f77b4; stroke-width: 2.5; }
+    .point { fill: #ff7f0e; stroke: #fff; stroke-width: 1; }
+  </style>
+
+  <!-- Title -->
+  <text x="400" y="28" text-anchor="middle" class="title">模拟种群的生存曲线图 (Ⅰ型) — log10(n_x)</text>
+
+  <!-- Plot margins -->
+  <!-- left=80, top=50, plot_w=680, plot_h=290 -->
+  <rect x="80" y="50" width="680" height="290" fill="#fff" stroke="none"/>
+
+  <!-- Y grid & labels (0.0 -> 1.6) -->
+  <!-- ticks at 0.0, 0.4, 0.8, 1.2, 1.6 -->
+  <g id="y-axis">
+    <line x1="80" y1="50" x2="80" y2="340" class="axis" />
+    <!-- tick and grid lines -->
+    <g class="grid">
+      <line x1="80" y1="340" x2="760" y2="340" stroke-opacity="0.6"/>
+      <line x1="80" y1="255" x2="760" y2="255" stroke-opacity="0.5"/>
+      <line x1="80" y1="170" x2="760" y2="170" stroke-opacity="0.4"/>
+      <line x1="80" y1="85"  x2="760" y2="85"  stroke-opacity="0.3"/>
+      <line x1="80" y1="50"  x2="760" y2="50"  stroke-opacity="0.2"/>
+    </g>
+    <!-- labels -->
+    <text x="60" y="344" class="label">0.0</text>
+    <text x="60" y="259" class="label">0.4</text>
+    <text x="60" y="174" class="label">0.8</text>
+    <text x="60" y="89" class="label">1.2</text>
+    <text x="52" y="54" class="label">1.6</text>
+    <text x="44" y="30" class="label">存活数的对数 (log10 n_x)</text>
+  </g>
+
+  <!-- X axis -->
+  <g id="x-axis">
+    <line x1="80" y1="340" x2="760" y2="340" class="axis" />
+    <!-- ticks and labels for x = 0..8 -->
+    <!-- compute positions: 80 + (i/8)*680 -->
+    <text x="80"  y="360" class="label">0</text>
+    <text x="165" y="360" class="label">1</text>
+    <text x="250" y="360" class="label">2</text>
+    <text x="335" y="360" class="label">3</text>
+    <text x="420" y="360" class="label">4</text>
+    <text x="505" y="360" class="label">5</text>
+    <text x="590" y="360" class="label">6</text>
+    <text x="675" y="360" class="label">7</text>
+    <text x="760" y="360" class="label">8</text>
+    <text x="420" y="390" class="label">年龄 (x)</text>
+  </g>
+
+  <!-- Data points (x:0-8, y: log10 n_x) -->
+  <!-- coordinates computed and embedded -->
+  <g id="data">
+    <!-- polyline connecting points -->
+    <polyline class="line" points="80,69.9375 165,80.8125 250,93.5 335,97.125 420,97.125 505,104.375 590,111.625 675,117.0625 760,253" />
+
+    <!-- points -->
+    <circle class="point" cx="80"  cy="69.9375" r="4.5" />
+    <circle class="point" cx="165" cy="80.8125" r="4.5" />
+    <circle class="point" cx="250" cy="93.5" r="4.5" />
+    <circle class="point" cx="335" cy="97.125" r="4.5" />
+    <circle class="point" cx="420" cy="97.125" r="4.5" />
+    <circle class="point" cx="505" cy="104.375" r="4.5" />
+    <circle class="point" cx="590" cy="111.625" r="4.5" />
+    <circle class="point" cx="675" cy="117.0625" r="4.5" />
+    <circle class="point" cx="760" cy="253" r="4.5" />
+
+    <!-- labels near final point showing values -->
+    <text x="770" y="253" class="label" font-size="11">(8, 0.48)</text>
+  </g>
+
+  <!-- caption -->
+  <text x="80" y="380" class="label">数据来源：模拟种群生命表（年龄 0–8），纵轴为存活数的 10 为对数，点与连线表示每年龄的 log10(n_x)。</text>
+
+</svg>
